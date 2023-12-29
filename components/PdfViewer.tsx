@@ -210,12 +210,10 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         const fontType = await pdfDoc.embedFont(selectedFont);
         const pages = pdfDoc.getPages();
         const firstPage = pages[0];
-        alert(firstPage.getWidth())
         const text = participantName as string;
         const textSize = fontSize;
         const maxWidth = getPdfMaxWidth(firstPage);
         const lines = breakTextIntoLines(text, fontType, textSize, maxWidth);
-        // let yOffset = firstPage.getHeight() - locationY;
         let yOffset = getYOffset();
 
         for (let i = 0; i < lines.length; i++) {

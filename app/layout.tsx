@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: "name2ecert",
-    description: "Introducing a web platform designed to streamline participants' e-certificate process for event organizers!",
+    description: "A web platform to generate participant's name on e-certificate.",
 }
 
 export default function RootLayout({

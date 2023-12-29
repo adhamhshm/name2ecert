@@ -2,26 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: rgb(255, 255, 255);
+    --background-start-rgb: rgba(0, 0, 0, 0.96);
+    --background-end-rgb: rgba(40, 40, 40, 0.99);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: var(--foreground-rgb);
+    background: linear-gradient( to bottom, var(--background-start-rgb), var(--background-end-rgb)), url("/wallpaper.webp"), center;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.active-nav {
+    @apply bg-white text-black rounded-3xl;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .pdf-image-horizontal {
+        width: 337px;
+        height: 238px;
+    }
+    .pdf-image-vertical {
+        width: 238px;
+        height: 337px
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .pdf-image-horizontal {
+        width: 421px;
+        height: 298px;
+    }
+    .pdf-image-vertical {
+        width: 298px;
+        height: 421px
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .pdf-image-horizontal {
+        width: 589px;
+        height: 417px;
+    }
+    .pdf-image-vertical {
+        width: 417px;
+        height: 589px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .pdf-image-horizontal {
+        width: 842px;
+        height: 595px;
+    }
+    .pdf-image-vertical {
+        width: 595px;
+        height: 842px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .pdf-image-horizontal {
+        width: 842px;
+        height: 595px;
+    }
+    .pdf-image-vertical {
+        width: 595px;
+        height: 842px;
+    }
 }

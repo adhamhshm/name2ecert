@@ -1,6 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## About name2ecert
 
-## Getting Started
+A web platform to generate participant's name on e-certificate. The purpose of the application is to ease and save the time especially for event organizers that need to make certificate for the participants that joined their event. 
+
+![Uniclubshub Homepage](screenshots/name2ecert.png)
+
+## Usage
+
+This application will need 2 file inputs. The list name of participants need to be in CSV file file format. The list name should only have 1 column with a header called "name". All participant name must be under the "name" column. Users should already have their designated e-certficate that need to be uploaded in PDF file format.
+
+Example CSV file with list name of participant as below:
+
+name                  | -> "name" is spelled in lowercase
+--------------------- | -------------
+participant name      | -> Content cell with names
+participant name      | -> Content cell with names
+participant name      | -> Content cell with names
+the list goes on...   |
+
+Users can position the anchor to the prefered location for the participant's name on the certificate. The platform provides three text customization options, allowing users to adjust font size, select from several font types, and choose a font color. Additionally, users can preview the edited file before downloading all the certificates together.
+
+## Accuracy
+
+The accuracy of the generated name's position may vary depending on the device screen size and document dimensions. It is advisable to use the application on a screen with a 16:9 aspect ratio, and the PDF document should be formatted to A4 size, whether in landscape or portrait orientation. 
+
+## Getting Started for Development
 
 First, run the development server:
 
@@ -16,21 +39,3 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

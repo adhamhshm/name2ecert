@@ -1,23 +1,23 @@
 ## About name2ecert
 
-A web platform to generate participant's name on e-certificate. The purpose of the application is to ease and save the time especially for event organizers that need to make certificate for the participants that joined their event. 
+A web platform to generate name on e-certificate. The purpose of the application is to save the time taken in generating multiple e-certificates with different names.
 
 ![Uniclubshub Homepage](screenshots/name2ecert.png)
 
 ## Usage
 
-This application will need 2 file inputs. The list name of participants need to be in CSV file file format. The list name should only have 1 column with a header called "name". All participant name must be under the "name" column. Users should already have their designated e-certficate that need to be uploaded in PDF file format.
+This application will need 2 file inputs. The name list of participants need to be in CSV file format. The name list should only have 1 column with a header called "name". All participant name must be under the "name" column. Users should already have their designated e-certficate that need to be uploaded in PDF file format.
 
 Example CSV file with list name of participant as below:
 
-name                  | -> "name" is spelled in lowercase
---------------------- | -------------
-participant name      | -> Content cell with names
-participant name      | -> Content cell with names
-participant name      | -> Content cell with names
-the list goes on...   |
+name (spelled in lowercase)  | header
+---------------------------- | ------
+participant name             | content
+participant name             | content
+participant name             | content
+the list goes on...          | content
 
-Users can position the anchor to the prefered location for the participant's name on the certificate. The platform provides three text customization options, allowing users to adjust font size, select from several font types, and choose a font color. Additionally, users can preview the edited file before downloading all the certificates together.
+The position the name anchor can be moved to the prefered location on the certificate. The platform provides three text customization options, allowing users to adjust font size, select from several font types, and choose a font color. Additionally, users can preview the edited file before downloading all the certificates together.
 
 ## Accuracy
 

@@ -453,9 +453,6 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
                             <button onClick={() => {generateCertificatePreview()}} className="rounded-full border border-white bg-zinc-900 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black hover:border-black text-center text-sm flex items-center justify-center">
                                 Download Preview
                             </button>
-                            <button onClick={() => {generateCertificatesInPdf()}} className="rounded-full border border-white bg-zinc-900 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black hover:border-black text-center text-sm flex items-center justify-center">
-                                Download All in PDF
-                            </button>
                             <button onClick={() => {generateCertificatesInZip()}} className="rounded-full border border-white bg-zinc-900 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black hover:border-black text-center text-sm flex items-center justify-center">
                                 Download All in ZIP
                             </button>

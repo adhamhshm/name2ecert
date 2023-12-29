@@ -327,7 +327,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         <div className="w-full flex flex-col justify-center items-center gap-5">
             {
                 imageUrl ? (
-                    <div className="w-fit h-fit flex justify-center bg-blue-300 relative">
+                    <div className="w-fit h-fit flex justify-center relative">
                         {
                             <img
                                 ref={imgRef}
@@ -442,11 +442,11 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
             {
                 previewImageUrl && (
                     <>
-                        <div className="w-fit h-fit flex justify-center">
+                        <div className="w-full flex justify-center">
                             <img 
                                 src={previewImageUrl} 
                                 alt="pdf-image" 
-                                className={`${imageOrientation === "landscape" ? "pdf-image-horizontal" : "pdf-image-vertical"} flex justify-center object-cover`}
+                                className={`${imageOrientation === "landscape" ? "pdf-image-horizontal" : "pdf-image-vertical"} flex justify-center`}
                             />
                         </div>
                         <div className="flex justify-center sm:flex-row flex-col gap-5">

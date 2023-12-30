@@ -8,7 +8,7 @@ const About = () => {
                     Generate Name On Certificate Made Easy
                 </h3>
                 <p className="text-md">
-                    Save your time taken in generating multiple digital certificates with different names!
+                    Save your time in generating multiple digital certificates with different names!
                 </p>
             </div>
             <div className="w-full flex justify-center">

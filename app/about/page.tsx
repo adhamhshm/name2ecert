@@ -14,26 +14,27 @@ const About = () => {
             <div className="w-full flex justify-center">
                 <div className="w-full grid grid-rows-1 sm:grid-cols-4 gap-1">
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
-                        <Image src="/upload.svg" alt="upload" width={200} height={200} className="w-2/5" />
+                        <Image src="/assets/upload.svg" alt="upload" width={200} height={200} className="w-2/5" />
                         <p className="text-md text-center">
-                            Upload the name list in one column with a header labeled "name".
+                            Upload the name list with a header labeled "name".
+                            Get the <a href="/template/namelist.csv" download className="underline underline-offset-4">CSV Template here</a>.
                             Upload the the e-certificate you have created.
                         </p>
                     </div>
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
-                        <Image src="/move.svg" alt="move" width={200} height={200} className="w-2/5" />
+                        <Image src="/assets/move.svg" alt="move" width={200} height={200} className="w-2/5" />
                         <p className="text-md text-center">
                             Move and place the name anchor to your preferred location on the certificate.
                         </p>
                     </div>
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
-                        <Image src="/custom.svg" alt="custom" width={200} height={200} className="w-2/5" />
+                        <Image src="/assets/custom.svg" alt="custom" width={200} height={200} className="w-2/5" />
                         <p className="text-md text-center">
                             Customize the font size, font type, and font color according to your preferences.
                         </p>
                     </div>
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
-                        <Image src="/download.svg" alt="download" width={200} height={200} className="w-2/5" />
+                        <Image src="/assets/download.svg" alt="download" width={200} height={200} className="w-2/5" />
                         <p className="text-md text-center">
                         Preview the changes and download the files as ZIP. Unzip the file to view all generated certificates. 
                         </p>

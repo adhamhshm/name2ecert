@@ -217,7 +217,6 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         const fontType = await pdfDoc.embedFont(selectedFont);
         const pages = pdfDoc.getPages();
         const firstPage = pages[0];
-        alert(firstPage.getHeight())
         const text = participantName as string;
         const textSize = fontSize;
         const maxWidth = getPdfMaxWidth(firstPage);

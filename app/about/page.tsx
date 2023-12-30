@@ -21,7 +21,7 @@ const About = () => {
                         </p>
                     </div>
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
-                        <Image src="/select.svg" alt="select" width={200} height={200} className="w-2/5" />
+                        <Image src="/move.svg" alt="move" width={200} height={200} className="w-2/5" />
                         <p className="text-md text-center">
                             Move and place the name anchor to your preferred location on the certificate.
                         </p>

@@ -118,7 +118,7 @@ const FileUpload = () => {
     };
 
     return (
-        <div className="w-full flex justify-center flex-col items-center gap-10 p-10 px-5">
+        <div className="w-full flex justify-center flex-col items-center gap-10 px-5">
             <div className="w-full sm:w-1/2 flex justify-center flex-col lg:flex-row gap-10">
                 <div className="w-full bg-zinc-900 border border-white rounded-xl dark:border-white">
                     <form className="flex flex-col gap-4 p-5">

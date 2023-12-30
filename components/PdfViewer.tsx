@@ -163,7 +163,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         return lines;
     };
 
-    // To count the
+    // To count the y offset for each specified dimensions
     const getYOffset = () => {
         let yValue;
         if (imageOrientation === "landscape" && imageDimensions.height >= 595) {
@@ -250,29 +250,25 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
 
     const generateCertificatePreview = async () => {
         const previewNames: string[] = ["Participant's Name", "Participant's Name That Is Long Should Be Printed In This Format And Outline"];
+        const pdfPreviewFile: Uint8Array[] = [];
         for ( let i = 0; i < previewNames.length; i++) {
             const pdfBytes = await updatePdf(previewNames[i]);
-            var blob = new Blob([pdfBytes], { type: "application/pdf" });
-            var link = document.createElement("a");
-            link.href = window.URL.createObjectURL(blob);
-            link.download = `preview-${i + 1}-certificate.pdf`;
-            link.click();
+            pdfPreviewFile.push(pdfBytes);
         }
-    };
-
-    const generateCertificatesInPdf = () => {
-        if (participantList.length <= 0) {
-            alert("Please upload a CSV file.")
-            return;
-        };
-        participantList.map(async (participant) => {
-            const pdfBytes = await updatePdf(participant.name);
-            var blob = new Blob([pdfBytes], { type: "application/pdf" });
-            var link = document.createElement("a");
-            link.href = window.URL.createObjectURL(blob);
-            link.download = `${participant.name}-certificate.pdf`;
-            link.click();
-        })
+        const mergedPdf = await PDFDocument.create();
+        for ( let i = 0; i < pdfPreviewFile.length; i++) {
+            const pdfToBeCopied = await PDFDocument.load(pdfPreviewFile[i]);
+            const copiedPages = await mergedPdf.copyPages(pdfToBeCopied, pdfToBeCopied.getPageIndices());
+            copiedPages.forEach((page) => {
+                mergedPdf.addPage(page)
+            });
+        }
+        const mergedPdfFileBytes = await mergedPdf.save();
+        var blob = new Blob([mergedPdfFileBytes], { type: "application/pdf" });
+        var link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `name2ecert-preview.pdf`;
+        link.click();
     };
 
     const generateCertificatesInZip = async () => {
@@ -324,7 +320,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
     };
 
     return (
-        <div className="w-full flex flex-col justify-center items-center gap-5">
+        <div className="w-full flex flex-col justify-center items-center gap-5 mb-5">
             {
                 imageUrl ? (
                     <div className="w-fit h-fit flex justify-center relative">

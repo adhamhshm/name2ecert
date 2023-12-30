@@ -5,12 +5,12 @@ const Nav = () => {
     return (
         <nav className="w-full flex justify-between bg-black py-4 px-5 md:px-32 font-inter text-xl shadow-zinc-500 shadow-sm">
             <Link href="/">
-                <p>
+                <p className="font-satoshi font-bold">
                     name2ecert
                 </p>
             </Link>
             <div className="flex flex-row gap-20">
-                <Link href="/" className="flex justify-center items-center gap-2">
+                <Link href="/about" className="flex justify-center items-center gap-2">
                     <Image 
                         src="/about.svg" 
                         alt="about" 

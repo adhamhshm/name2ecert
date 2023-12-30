@@ -6,9 +6,9 @@ A web platform to generate name on e-certificate. The purpose of the application
 
 ## Usage
 
-This application will need 2 file inputs. The name list of participants need to be in CSV file format. The name list should only have 1 column with a header called "name". All participant name must be under the "name" column. Users should already have their designated e-certficate that need to be uploaded in PDF file format.
+This application will need 2 file inputs. The name list of participants need to be in CSV file format. The name list should only have 1 column with a header called "name". Participant name list must be under the "name" column. Digital certficate needs to be uploaded in PDF file format.
 
-Example CSV file with list name of participant as below:
+Example CSV file with the name list of participants as below:
 
 name (spelled in lowercase)  | header
 ---------------------------- | ------
@@ -17,7 +17,9 @@ participant name             | content
 participant name             | content
 the list goes on...          | content
 
-The position the name anchor can be moved to the prefered location on the certificate. The platform provides three text customization options, allowing users to adjust font size, select from several font types, and choose a font color. Additionally, users can preview the edited file before downloading all the certificates together.
+The position of the name anchor can be moved to the prefered location on the certificate. The application provides three text customization options - font size adjustment, several font types selection, and font color picker. 
+
+Additionally, the edited file can be previewed before downloading all the certificates together.
 
 ## Accuracy
 

@@ -16,9 +16,8 @@ const About = () => {
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
                         <Image src="/assets/upload.svg" alt="upload" width={200} height={200} className="w-1/5" />
                         <p className="text-md text-center">
-                            Upload the name list with a header labeled "name".
+                            Upload the name list and the e-certificate you had created.
                             Get the <a href="/template/namelist-template.csv" download className="underline underline-offset-4">CSV Template here</a>.
-                            Upload the the e-certificate you have created.
                         </p>
                     </div>
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
@@ -46,7 +45,7 @@ const About = () => {
                 <span className="font-bold">Important Notes:</span>
                 <div>
                 <ul className="list-disc">
-                    <li>Name list must be in CSV file format.</li>
+                    <li>Name list must be formatted in one column using the CSV file format.</li>
                     <li>Header labeled "name" should be spelled in lowercase.</li>
                     <li>E-certificate must be in PDF file format.</li>
                     <li>For optimal usage, recommend a 16:9 screen and format the PDF document to A4 size, whether in landscape or portrait orientation.</li>

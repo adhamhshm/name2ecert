@@ -145,7 +145,14 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
             // Concatenate the current line with the next word to form a line that is to be measured
             const measuredLine = currentLine + " " + words[i];
             // Calculate the width of the measured line using the provided font and font size
-            const width = font.widthOfTextAtSize(measuredLine, size);
+            let width;
+            try {
+                width = font.widthOfTextAtSize(measuredLine, size);
+            }
+            catch (error) {
+                alert("Unreadable character detected in name list.");
+                return;
+            }
             // Check if the width of the measured line is within the specified maximum width
             if (width < maxWidth) {
                 // If the measured line fits within the maximum width, update the current line
@@ -215,22 +222,24 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         const maxWidth = getPdfMaxWidth(firstPage);
         const lines = breakTextIntoLines(text, fontType, textSize, maxWidth);
         let yOffset = getYOffset();
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i];
-            const textWidth = fontType.widthOfTextAtSize(line, textSize);
-            const textHeight = fontType.heightAtSize(textSize);
-            const isMultipleLines = lines.length > 1;
-        
-            const yAdjustment = isMultipleLines ? textHeight / 2 : 0;
-            firstPage.drawText(line, {
-                x: firstPage.getWidth() / 2 - textWidth / 2,
-                y: yOffset - textHeight + yAdjustment,
-                size: textSize,
-                font: fontType,
-                color: rgb(fontColor.r / 255, fontColor.g / 255, fontColor.b / 255), // divide by 255 because of the library input limit number to 1
-            });
-        
-            yOffset -= textHeight; // Adjust for the next line
+        if (lines) {
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const textWidth = fontType.widthOfTextAtSize(line, textSize);
+                const textHeight = fontType.heightAtSize(textSize);
+                const isMultipleLines = lines.length > 1;
+            
+                const yAdjustment = isMultipleLines ? textHeight / 2 : 0;
+                firstPage.drawText(line, {
+                    x: firstPage.getWidth() / 2 - textWidth / 2,
+                    y: yOffset - textHeight + yAdjustment,
+                    size: textSize,
+                    font: fontType,
+                    color: rgb(fontColor.r / 255, fontColor.g / 255, fontColor.b / 255), // divide by 255 because of the library input limit number to 1
+                });
+            
+                yOffset -= textHeight; // Adjust for the next line
+            }
         }
     
         const pdfBytes = await pdfDoc.save();

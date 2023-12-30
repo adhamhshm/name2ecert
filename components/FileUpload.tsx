@@ -27,7 +27,7 @@ const FileUpload = () => {
             reader.onerror = (e) => reject(new Error("Error reading file."));
             // Start reading the contents of the file as text
             if (file.name.endsWith(".csv")) {
-                reader.readAsText(file);
+                reader.readAsText(file, "UTF-8");
             }
 
             if (file.name.endsWith(".pdf")) {
@@ -39,14 +39,21 @@ const FileUpload = () => {
     // To parse the csv data from the csv file content
     const parseCsvData = (content: string) => {
         const results: Participant[] = [];
+    
+        const parseConfig = {
+            encoding: 'utf8', // Specify the correct encoding
+            skipLines: 0,
+            text: true,
+        };
         // Use "skiplines", assuming the CSV has a header row
         // The .on("data", ...) is like an event listener to the "data" event. When the parser processes a row of data, this event 
         // is emitted, and the provided callback is executed, pushing the data (a row from the CSV file) into the "results" array.
         // write() will send the raw "content" of the file (e.target?.result) to the parser. This triggers the parsing process, and 
         // as each row of data is parsed, the "data" event is emitted, and the provided callback is executed.
-        csv({ skipLines: 0 })
+        csv(parseConfig)
             .on("data", (data) => results.push(data))
             .write(content);
+    
         return results;
     };
 

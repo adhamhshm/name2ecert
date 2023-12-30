@@ -120,12 +120,12 @@ const FileUpload = () => {
         const pages = pdfDoc.getPages();
         const firstPage = pages[0];
         // Small A4 width range to avoid too big or too small document dimensions
-        if (!((firstPage.getWidth() >= 841 && firstPage.getWidth() <= 843) || (firstPage.getWidth() >= 595 && firstPage.getWidth() <= 597))) {
+        if (!((firstPage.getWidth() >= 841 && firstPage.getWidth() <= 843) || (firstPage.getWidth() >= 595 && firstPage.getWidth() <= 596))) {
             alert("PDF width does not match A4 format.");
             return false;
         }
         // Small A4 height range to avoid too big or too small document dimensions
-        if (!((firstPage.getHeight() >= 595 && firstPage.getHeight() <= 597) || (firstPage.getHeight() >= 841 && firstPage.getHeight() <= 843))) {
+        if (!((firstPage.getHeight() >= 595 && firstPage.getHeight() <= 596) || (firstPage.getHeight() >= 841 && firstPage.getHeight() <= 843))) {
             alert("PDF height does not match A4 format.");
             return false;
         }

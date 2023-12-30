@@ -174,10 +174,10 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
     const getYOffset = () => {
         let yValue;
         if (imageOrientation === "landscape" && imageDimensions.height >= 595) {
-            yValue = imageDimensions.height - locationY;
+            yValue = imageDimensions.height - locationY - 4;
         }
         else if (imageOrientation === "potrait" && imageDimensions.height >= 842) {
-            yValue = imageDimensions.height - locationY + 5;
+            yValue = imageDimensions.height - locationY;
         }
         else if (imageOrientation === "landscape" && imageDimensions.height >= 417) {
             yValue = ((imageDimensions.height - locationY) / 0.7);
@@ -217,6 +217,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         const fontType = await pdfDoc.embedFont(selectedFont);
         const pages = pdfDoc.getPages();
         const firstPage = pages[0];
+        alert(firstPage.getHeight())
         const text = participantName as string;
         const textSize = fontSize;
         const maxWidth = getPdfMaxWidth(firstPage);

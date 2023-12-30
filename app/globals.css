@@ -19,7 +19,7 @@
 
 body {
     color: var(--foreground-rgb);
-    background: linear-gradient( to bottom, var(--background-start-rgb), var(--background-end-rgb)), url("/wallpaper.webp"), center;
+    background: linear-gradient( to bottom, var(--background-start-rgb), var(--background-end-rgb)), url("/assets/wallpaper.webp"), center;
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;

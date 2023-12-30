@@ -215,7 +215,6 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
         const maxWidth = getPdfMaxWidth(firstPage);
         const lines = breakTextIntoLines(text, fontType, textSize, maxWidth);
         let yOffset = getYOffset();
-
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
             const textWidth = fontType.widthOfTextAtSize(line, textSize);

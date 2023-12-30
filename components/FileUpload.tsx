@@ -4,6 +4,7 @@ import { ChangeEvent, use, useState } from "react";
 import csv from "csv-parser";
 import PdfViewer from "./PdfViewer";
 import { Participant } from "../constants/customTypes";
+import { PDFDocument } from "pdf-lib";
 
 const FileUpload = () => {
 
@@ -91,10 +92,37 @@ const FileUpload = () => {
     };
 
     const readPdfFile = async (file : File) => {
+        const existingPdfBytes = await getFileContent(file);
+        const pdfValidityStatus = await validatePdfFile(existingPdfBytes as ArrayBuffer);
+        if (pdfValidityStatus === false) {
+            return;
+        }
+        setPdfFileBytes(existingPdfBytes as ArrayBuffer);
         const existingPdfDataUrl = await getPdfFileDataUrl(file) as string;
         setPdfFileUrl(existingPdfDataUrl as string);
-        const existingPdfBytes = await getFileContent(file);
-        setPdfFileBytes(existingPdfBytes as ArrayBuffer);
+    };
+
+    // Validate pdf file pages, width and height
+    const validatePdfFile = async (pdfFileBytes: ArrayBuffer) => {
+        const pdfDoc = await PDFDocument.load(pdfFileBytes as ArrayBuffer);
+        const totalPages = pdfDoc.getPageCount();
+        if (totalPages > 1) {
+            alert("Please upload a single page PDF file.")
+            return false;
+        }
+        const pages = pdfDoc.getPages();
+        const firstPage = pages[0];
+        // Small A4 width range to avoid too big or too small document dimensions
+        if (!((firstPage.getWidth() >= 841 && firstPage.getWidth() <= 843) || (firstPage.getWidth() >= 595 && firstPage.getWidth() <= 597))) {
+            alert("PDF width does not match A4 format.");
+            return false;
+        }
+        // Small A4 height range to avoid too big or too small document dimensions
+        if (!((firstPage.getHeight() >= 595 && firstPage.getHeight() <= 597) || (firstPage.getHeight() >= 841 && firstPage.getHeight() <= 843))) {
+            alert("PDF height does not match A4 format.");
+            return false;
+        }
+        return true;
     };
 
     // Handle the uploaded pdf file

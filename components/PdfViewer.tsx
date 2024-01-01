@@ -44,16 +44,10 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
                     height: imgRef.current?.height as number,
                 });
             };
-    
-            // Attach the event listener
+            // Add the event listener
             imgRef.current.addEventListener("load", handleImageLoad);
-    
-            // Remove the event listener when the component unmounts
-            return () => {
-                imgRef.current?.removeEventListener("load", handleImageLoad);
-            };
         }
-    }, [imageUrl]); // Trigger effect when imageUrl changes
+    }, [imageUrl]);
     
     useEffect(() => {
         // Update image dimensions when the window is resized
@@ -63,15 +57,9 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
                 height: imgRef.current?.height || 0,
             });
         };
-    
-        // Attach the event listener
+        // Add the event listener
         window.addEventListener("resize", handleResize);
-    
-        // Remove the event listener when the component unmounts
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []); // Trigger effect only once when the component mounts
+    }, []);
 
     const setImage = (url: string, orientation: string) => {
         setImageUrl(url);

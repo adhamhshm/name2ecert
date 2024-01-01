@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, use, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import csv from "csv-parser";
 import PdfViewer from "./PdfViewer";
 import { Participant } from "../constants/customTypes";
@@ -39,47 +39,51 @@ const FileUpload = () => {
     // To parse the csv data from the csv file content
     const parseCsvData = (content: string) => {
         const results: Participant[] = [];
-    
-        const parseConfig = {
-            encoding: 'utf8', // Specify the correct encoding
-            skipLines: 0,
-            text: true,
-        };
+        let checkHeader = true;
+        csv({})
+            .on("headers", (headers) => {
+                // Check if the header spelled correctly
+                if (headers[0] !== "name") {
+                    alert("The header in the CSV file data might have been spelled wrong.");
+                    checkHeader = false;
+                }
+            })
+            .write(content);
         // Use "skiplines", assuming the CSV has a header row
         // The .on("data", ...) is like an event listener to the "data" event. When the parser processes a row of data, this event 
         // is emitted, and the provided callback is executed, pushing the data (a row from the CSV file) into the "results" array.
         // write() will send the raw "content" of the file (e.target?.result) to the parser. This triggers the parsing process, and 
         // as each row of data is parsed, the "data" event is emitted, and the provided callback is executed.
-        csv(parseConfig)
-            .on("data", (data) => results.push(data))
-            .write(content);
+        if (checkHeader === true) {
+            csv({ skipLines: 0 })
+                .on("data", (data) => {
+                    results.push(data)
+                })
+                .write(content);
+        }
     
         return results;
     };
 
-    // To get the participant list from the csv file
-    const getParticipantCsvFile = async (file : File) => {
-        try {
-            const content = await getFileContent(file);
-            const parsedResults = parseCsvData(content as string);
-            setParticipantList(parsedResults);
-        }
-        catch {
-            alert("Error reading or parsing the CSV file.");
-        }
-    };
-
     // Handle the uploaded csv file
-    const handleCsvFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleCsvFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const file: File | undefined = e.target.files?.[0];
 
         try {
             // Check if the file has a CSV file extension
             if (file && file.name.endsWith(".csv")) {
-                getParticipantCsvFile(file);
+                const content = await getFileContent(file);
+                const parsedResults = parseCsvData(content as string);
+                // If the parsedResults data is undefined, dont save the file
+                if (parsedResults.length < 1) {
+                    e.target.value = "";
+                    return;
+                }
+                setParticipantList(parsedResults);
             }
             else {
                 alert("Selected file is not a CSV file.");
+                e.target.value = "";
                 return;
             }
         }
@@ -145,6 +149,8 @@ const FileUpload = () => {
             } 
             else {
                 alert("Selected file is not a PDF file.");
+                e.target.value = "";
+                return;
             }
         } 
         catch (error) {

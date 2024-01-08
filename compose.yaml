@@ -21,4 +21,4 @@ services:
           target: /app
           action: sync
 volumes:
-  name2cert:
+  name2ecert:

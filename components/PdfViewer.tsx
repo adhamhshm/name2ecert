@@ -279,7 +279,8 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
                 const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
     
                 // Add the PDF file to the zip with a specific name
-                zip.file(`${participant.name}-certificate.pdf`, pdfBlob);
+                //zip.file(`${participant.name}-certificate.pdf`, pdfBlob);
+                zip.file(`${participant.name.replace(/\//g, '-')}-certificate.pdf`, pdfBlob);
             })
         );
     

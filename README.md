@@ -6,24 +6,26 @@ A web platform to generate name on e-certificate. The purpose of the application
 
 ## Usage
 
-This application will need 2 file inputs. The name list of participants need to be in CSV file format. The name list should only have 1 column with a header called "name". Participant name list must be under the "name" column. Digital certficate needs to be uploaded in PDF file format.
+This application will need 2 file inputs. The name list of participants need to be in CSV file format. The name list should only have 1 column with a header called "name" (note the word "name" is spelled in lowercase). Participant name list must be under the "name" column. Digital certificate needs to be uploaded in PDF file format.
 
 Example CSV file with the name list of participants as below:
 
-name (spelled in lowercase)  | header
----------------------------- | ------
-participant name             | content
-participant name             | content
-participant name             | content
-the list goes on...          | content
+name                   | header
+---------------------- | ------
+participant name       | content
+participant name       | content
+participant name       | content
+the list goes on...    | content
 
 The position of the name anchor can be moved to the prefered location on the certificate. The application provides three text customization options - font size adjustment, several font types selection, and font color picker. 
 
-Additionally, the edited file can be previewed before downloading all the certificates together.
+Additionally, click the preview button to update any changes made before downloading all the certificates together.
 
 ## Accuracy
 
 The accuracy of the generated name's position may vary depending on the device screen size and document dimensions. It is advisable to use the application on a screen with a 16:9 aspect ratio, and the PDF document should be formatted to A4 size, whether in landscape or portrait orientation. 
+
+There may be some limitations in many aspects, feel free to give your feedback and comments!
 
 ## Getting Started for Development
 

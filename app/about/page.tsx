@@ -23,7 +23,7 @@ const About = () => {
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
                         <Image src="/assets/move.svg" alt="move" width={200} height={200} className="w-1/5" />
                         <p className="text-md text-center">
-                            Move and place the name anchor to your preferred position. Note that the text will 
+                            Move the name anchor to your preferred position. Note that the text will 
                             always set to center horizontally.
                         </p>
                     </div>
@@ -36,7 +36,7 @@ const About = () => {
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
                         <Image src="/assets/download.svg" alt="download" width={200} height={200} className="w-1/5" />
                         <p className="text-md text-center">
-                        Preview the changes and download the files as ZIP. Unzip the file to view all generated certificates. 
+                        Click preview to update any changes and download the files as ZIP. Unzip it to view all certificates. 
                         </p>
                     </div>
                 </div>
@@ -48,8 +48,10 @@ const About = () => {
                     <li>Name list must be formatted in one column using the CSV file format.</li>
                     <li>Header labeled "name" should be spelled in lowercase.</li>
                     <li>E-certificate must be in PDF file format.</li>
-                    <li>For optimal usage, recommend a 16:9 screen and format the PDF document to A4 size, whether in landscape or portrait orientation.</li>
+                    <li>Format the PDF document to A4 size, whether in landscape or portrait orientation.</li>
+                    <li>Recommend a 16:9 screen for optimal view and usage.</li>
                     <li>Some characters like a letter with stroke may not be read, leaving an empty space.</li>
+                    <li>This app is suitable if only the name is to be positioned center.</li>
                 </ul>
                 </div>
             </div>

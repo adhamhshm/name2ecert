@@ -165,7 +165,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
             yValue = imageDimensions.height - locationY - 4;
         }
         else if (imageOrientation === "potrait" && imageDimensions.height >= 842) {
-            yValue = imageDimensions.height - locationY;
+            yValue = imageDimensions.height - locationY - 4;
         }
         else if (imageOrientation === "landscape" && imageDimensions.height >= 417) {
             yValue = ((imageDimensions.height - locationY) / 0.7);
@@ -280,7 +280,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
     
                 // Add the PDF file to the zip with a specific name
                 //zip.file(`${participant.name}-certificate.pdf`, pdfBlob);
-                zip.file(`${participant.name.replace(/\//g, '-')}-certificate.pdf`, pdfBlob);
+                zip.file(`${participant.name.replace(/\//g, '-')}.pdf`, pdfBlob);
             })
         );
     

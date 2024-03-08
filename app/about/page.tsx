@@ -23,8 +23,7 @@ const About = () => {
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">
                         <Image src="/assets/move.svg" alt="move" width={200} height={200} className="w-1/5" />
                         <p className="text-md text-center">
-                            Move the name anchor to your preferred position. The printed text will 
-                            always always be centered horizontally.
+                            Move the name anchor to your preferred position. The printed text will always be centered horizontally.
                         </p>
                     </div>
                     <div className="flex justify-center items-center flex-col gap-5 pb-5 px-2 lg:px-10">

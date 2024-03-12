@@ -220,7 +220,7 @@ const PdfViewer = ({ pdfFile, pdfFileUrl, pdfFileBytes, participantList }: Props
                 const yAdjustment = isMultipleLines ? textHeight / 2 : 0;
                 firstPage.drawText(line, {
                     x: firstPage.getWidth() / 2 - textWidth / 2,
-                    y: yOffset - textHeight + yAdjustment,
+                    y: yOffset - textHeight + yAdjustment + (0.6 * (textSize - 24)), // The textSize calculation is used as when the textSize changes, its placement will also effected
                     size: textSize,
                     font: fontType,
                     color: rgb(fontColor.r / 255, fontColor.g / 255, fontColor.b / 255), // divide by 255 because of the library input limit number to 1

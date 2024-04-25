@@ -106,11 +106,12 @@ const FileUpload = () => {
         const existingPdfBytes = await getFileContent(file);
         const pdfValidityStatus = await validatePdfFile(existingPdfBytes as ArrayBuffer);
         if (pdfValidityStatus === false) {
-            return;
+            return "Read file failed.";
         }
         setPdfFileBytes(existingPdfBytes as ArrayBuffer);
         const existingPdfDataUrl = await getPdfFileDataUrl(file) as string;
         setPdfFileUrl(existingPdfDataUrl as string);
+        return "Read file successful.";
     };
 
     // Validate pdf file pages, width and height
@@ -118,7 +119,7 @@ const FileUpload = () => {
         const pdfDoc = await PDFDocument.load(pdfFileBytes as ArrayBuffer);
         const totalPages = pdfDoc.getPageCount();
         if (totalPages > 1) {
-            alert("Please upload a single page PDF file.")
+            alert("Please upload a single page PDF file.");
             return false;
         }
         const pages = pdfDoc.getPages();
@@ -137,13 +138,17 @@ const FileUpload = () => {
     };
 
     // Handle the uploaded pdf file
-    const handlePdfFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // Somehow would love to review this later
+    const handlePdfFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const file: File | undefined = e.target.files?.[0];
 
         try {
             // Check if the file has a CSV file extension
             if (file && file.name.endsWith(".pdf")) {
-                readPdfFile(file)
+                if (await readPdfFile(file) === "Read file failed.") {
+                    e.target.value = "";
+                    return;
+                };
                 setPdfFile(file);
                 
             } 
